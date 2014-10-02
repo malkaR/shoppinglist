@@ -3,9 +3,10 @@ from rest_framework import serializers
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     is_admin = serializers.Field(source='is_admin')
+    item_count = serializers.Field(source='total_item_count')
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'is_admin')
+        fields = ('username', 'first_name', 'last_name', 'is_admin', 'item_count')
 
 class ListItemSerializer(serializers.HyperlinkedModelSerializer):
     url = serializers.HyperlinkedIdentityField(

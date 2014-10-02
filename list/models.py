@@ -90,6 +90,9 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
+    def total_item_count(self):
+        return sum([list.list_item_count() for list in self.list_set.all()])
+
     def get_full_name(self):
         return u'{} {}'.format(self.first_name, self.last_name)
 
